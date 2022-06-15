@@ -4,7 +4,7 @@ var cors = require("cors");
 
 require("dotenv").config();
 const app = express();
-const port = process.env.PORT || 80;
+const port = process.env.PORT || 5000;
 var db_info = {
   host: process.env.DB_HOST,
   port: "3306",
@@ -15,14 +15,14 @@ var db_info = {
 app.use(express.json());
 app.use(
   cors({
-    origin: "https://coast-test.netlify.app/",
+    origin: "https://coast-test.netlify.app",
     credentials: true,
   })
 );
 app.post("/", (req, res) => {
   var connection = mysql.createConnection(db_info);
   connection.connect();
-
+  res.write("hello");
   if (req.body.data) {
     connection.query(
       `UPDATE testevent SET InputData = "${req.body.data}" `,
