@@ -6,13 +6,13 @@ require("dotenv").config();
 const app = express();
 
 const port = process.env.PORT || 5000;
-var db_info = {
-  host: process.env.DB_HOST,
-  port: "3306",
-  user: process.env.DB_USER,
-  database: process.env.DB_USER,
-  password: process.env.DB_PASS,
-};
+// var db_info = {
+//   host: process.env.DB_HOST,
+//   port: "3306",
+//   user: process.env.DB_USER,
+//   database: process.env.DB_USER,
+//   password: process.env.DB_PASS,
+// };
 
 app.use(express.json());
 app.use(
@@ -22,8 +22,8 @@ app.use(
   })
 );
 
-var connection = mysql.createConnection(db_info);
-connection.connect();
+// var connection = mysql.createConnection(db_info);
+// connection.connect();
 
 app.get("/", (req, res) => {
   res.sendFile(__dirname + "/index.html");
