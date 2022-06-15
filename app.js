@@ -4,6 +4,7 @@ var cors = require("cors");
 
 require("dotenv").config();
 const app = express();
+
 const port = process.env.PORT || 5000;
 var db_info = {
   host: process.env.DB_HOST,
@@ -12,33 +13,38 @@ var db_info = {
   database: process.env.DB_USER,
   password: process.env.DB_PASS,
 };
+
 app.use(express.json());
 app.use(
   cors({
-    origin: "https://coast-test.netlify.app",
+    origin: "https://coast-guard-test-app.herokuapp.com",
     credentials: true,
   })
 );
-app.post("/", (req, res) => {
-  var connection = mysql.createConnection(db_info);
-  connection.connect();
-  res.write("hello");
-  if (req.body.data) {
-    connection.query(
-      `UPDATE testevent SET InputData = "${req.body.data}" `,
-      function (err, results, fields) {
-        // testQuery 실행
-        if (err) {
-          console.log(err);
-        }
-      }
-    );
-  }
 
-  console.log(req.body.data);
-  // res.sendFile(__dirname + "/dist/index.html");
+var connection = mysql.createConnection(db_info);
+connection.connect();
+
+app.get("/", (req, res) => {
+  res.sendFile(__dirname + "/index.html");
 });
-
+app.post("/data", (req, res) => {
+  // if (req.body.data) {
+  //   connection.query(
+  //     `UPDATE testevent SET InputData = "${req.body.data}" `,
+  //     function (err, results, fields) {
+  //       // testQuery 실행
+  //       if (err) {
+  //         console.log(err);
+  //       }
+  //     }
+  //   );
+  // }
+  if (req.body.data) {
+    console.log(req.body.data);
+  }
+  res.send("OK");
+});
 app.listen(port, () => {
   console.log(`Example app listening on port ${port}`);
 });
