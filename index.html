@@ -23,7 +23,7 @@
         justify-content: center;
         align-items: center;
         width: 70vw;
-        height: 15vh;
+        height: 10vh;
         margin: 2vw;
         font-size: 70px;
         border-radius: 12px;
@@ -39,6 +39,7 @@
     </style>
   </head>
   <body>
+    <a href="/hello">helloopenstack</a>
     <button class="btn" value="1">1</button>
     <button class="btn" value="2">2</button>
     <button class="btn" value="3">3</button>
@@ -57,7 +58,7 @@
         };
 
         await fetch("/data", fetch_data)
-          .then(response => console.log(response.statusText))
+          .then(response => alert(response.statusText + number))
           .catch(error => {
             console.error("Error:", error);
           });

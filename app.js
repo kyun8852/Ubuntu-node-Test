@@ -45,6 +45,10 @@ app.post("/data", (req, res) => {
   }
   res.send("OK");
 });
+
+app.get("/hello", (req, res) => {
+  res.sendFile(__dirname + "/hello_openstack.html");
+});
 app.listen(port, () => {
   console.log(`Example app listening on port ${port}`);
 });
