@@ -42,7 +42,7 @@
     <button class="btn" value="1">1</button>
     <button class="btn" value="2">2</button>
     <button class="btn" value="3">3</button>
-    <form action="/data" enctype="multipart/form-data" method="post">
+    <form action="/" enctype="multipart/form-data" method="post">
       <input type="file" name="file" />
       <input type="submit" name="upload" />
     </form>
@@ -57,7 +57,7 @@
           body: JSON.stringify({ data: number }),
         };
 
-        await fetch("/upload", fetch_data)
+        await fetch("/data", fetch_data)
           .then(response => alert(response.statusText + number))
           .catch(error => {
             console.error("Error:", error);
