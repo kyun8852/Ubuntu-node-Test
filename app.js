@@ -17,7 +17,7 @@ app.use(
 app.get("/", (req, res) => {
   res.sendFile(__dirname + "/index.html");
 });
-app.post("/", (req, res) => {
+app.post("/upload", (req, res) => {
   if (req.files) {
     var file = req.files.file;
     var filename = file.name;
@@ -25,7 +25,7 @@ app.post("/", (req, res) => {
       if (err) {
         res.send(err);
       } else {
-        res.send("fileuplodad");
+        res.sendFile(__dirname + "/index.html");
       }
     });
   }
