@@ -18,7 +18,7 @@ app.use(express.json());
 app.use(upload());
 app.use(
   cors({
-    origin: "https://coast-guard-test-app.herokuapp.com",
+    origin: "*",
     credentials: true,
   })
 );
