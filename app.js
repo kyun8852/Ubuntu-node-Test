@@ -30,6 +30,13 @@ app.get("/", (req, res) => {
   res.sendFile(__dirname + "/index.html");
 });
 app.post("/upload", (req, res) => {
+  if (req.body.data) {
+    console.log(req.body.data);
+  }
+  res.send("OK");
+});
+
+app.post("/data", (req, res) => {
   if (req.files) {
     var file = req.files.file;
     var filename = file.name;
@@ -41,9 +48,6 @@ app.post("/upload", (req, res) => {
       }
     });
   }
-});
-
-app.post("/data", (req, res) => {
   // if (req.body.data) {
   //   connection.query(
   //     `UPDATE testevent SET InputData = "${req.body.data}" `,
@@ -55,10 +59,6 @@ app.post("/data", (req, res) => {
   //     }
   //   );
   // }
-  if (req.body.data) {
-    console.log(req.body.data);
-  }
-  res.send("OK");
 });
 
 app.get("/hello", (req, res) => {

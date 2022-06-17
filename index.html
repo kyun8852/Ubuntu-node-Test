@@ -39,11 +39,10 @@
     </style>
   </head>
   <body>
-    <a href="/hello">helloopenstack</a>
     <button class="btn" value="1">1</button>
     <button class="btn" value="2">2</button>
     <button class="btn" value="3">3</button>
-    <form action="/upload" enctype="multipart/form-data" method="post">
+    <form action="/data" enctype="multipart/form-data" method="post">
       <input type="file" name="file" />
       <input type="submit" name="upload" />
     </form>
@@ -58,7 +57,7 @@
           body: JSON.stringify({ data: number }),
         };
 
-        await fetch("/data", fetch_data)
+        await fetch("/upload", fetch_data)
           .then(response => alert(response.statusText + number))
           .catch(error => {
             console.error("Error:", error);
